@@ -1,0 +1,32 @@
+<!--<div class="container">-->
+  <%# flash.each do |key, value| %>
+    <%# puts flash %>
+  <%# if flash[:notice] %>
+    <%#= flash[:notice] %>
+    <%#= react_component('FlashMessage', {flash_message: flash_messages }) %>
+  <%# end %>
+    <%# unless flash[:notice].nil?%>
+<!--</div>-->
+<div>
+  <p>
+    test hi
+  </p>
+</div>
+<%= react_component("Home") %>
+<!--<div class="flash">-->
+  <%# if flash[:notice] %>
+<!--    <div class="alert alert-danger">-->
+<!--      <div class="flashMessage" id="notice">-->
+<!--        <p>TEXT ARE YOU EVEN SHOWING?!</p>-->
+        <%#= flash[:notice] %>
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div className="flash"></div>-->
+  <%# end %>
+<!--</div>-->
+<!--<h3>Create a game</h3>-->
+<%#= form_tag room_index_path, :method=>:post, :id=>'join_game_form' do %>
+  <%#= label_tag(:name, "Enter Name: ") %>
+  <%#= text_field_tag(:name, '', :id=>:create_name_box) %>
+  <%#= submit_tag('Create Game') %>
+<%# end %>
