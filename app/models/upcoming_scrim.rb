@@ -1,0 +1,3 @@
+class UpcomingScrim < ApplicationRecord
+
+end
