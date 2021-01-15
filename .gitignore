@@ -57,7 +57,7 @@ build-iPhoneSimulator/
 tmp/*
 .idea/
 log/
-Gemfile.lock
+#Gemfile.lock
 ./bundle/
 db/*.sqlite3
 .bundle/
