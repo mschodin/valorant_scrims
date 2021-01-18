@@ -3,9 +3,11 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import sg_logo from '/app/assets/images/sg_logo.png';
 import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+import LoginModal from './LoginModal'
 
 function NavBar() {
+    const [modalShow, setModalShow] = React.useState(false);
+
     return (
         <>
             <Navbar bg="primary">
@@ -25,10 +27,12 @@ function NavBar() {
                     <Nav.Link href={"#messages"}>Messages</Nav.Link>
                     <Nav.Link href={"#your_scrims"}>Your Scrims</Nav.Link>
                 </Nav>
-                <Form inline>
-                    <Button variant={'dark'}>Login</Button>
-                </Form>
+                <Button onClick={() => setModalShow(true)} variant={'dark'}>Login</Button>
             </Navbar>
+            <LoginModal
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+            />
         </>
     );
 };
