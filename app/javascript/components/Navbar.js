@@ -8,7 +8,7 @@ import Form from 'react-bootstrap/Form';
 function NavBar() {
     return (
         <>
-            <Navbar bg="primary" variant={'dark'}>
+            <Navbar bg="primary">
                 <Navbar.Brand href="#home">
                     <img
                         src={sg_logo}
