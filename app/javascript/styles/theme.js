@@ -3,13 +3,13 @@ import { createMuiTheme } from '@material-ui/core/styles';
 const theme = createMuiTheme({
     palette: {
         primary: {
-            main: "#00695c"// blueish
+            main: "#056839" // Dark Green
         },
         secondary: {
-            main: "#aed581" // greenish
+            main: "#8cc63f" // Light Green
         },
         background: {
-            default: "floralwhite"
+            default: "#949494" // Dark Gray
         }
     },
     fontFamily: "Roboto",
