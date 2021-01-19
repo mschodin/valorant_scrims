@@ -12,7 +12,7 @@ const theme = createMuiTheme({
             default: "#949494" // Dark Gray
         }
     },
-    fontFamily: "Roboto",
+    // fontFamily: "Roboto",
 });
 
 export default theme;
