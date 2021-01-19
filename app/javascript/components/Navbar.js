@@ -4,9 +4,11 @@ import Nav from 'react-bootstrap/Nav';
 import sg_logo from '/app/assets/images/sg_logo.png';
 import Button from 'react-bootstrap/Button';
 import LoginModal from './LoginModal'
+import SignUpModal from "./SignUpModal";
 
 function NavBar() {
-    const [modalShow, setModalShow] = React.useState(false);
+    const [loginShow, setLoginShow] = React.useState(false);
+    const [signupShow, setSignupShow] = React.useState(false);
 
     return (
         <>
@@ -27,11 +29,17 @@ function NavBar() {
                     <Nav.Link href={"#messages"}>Messages</Nav.Link>
                     <Nav.Link href={"#your_scrims"}>Your Scrims</Nav.Link>
                 </Nav>
-                <Button onClick={() => setModalShow(true)} variant={'dark'}>Login</Button>
+                <Button onClick={() => setLoginShow(true)} variant={'dark'}>Login</Button>
             </Navbar>
             <LoginModal
-                show={modalShow}
-                onHide={() => setModalShow(false)}
+                show={loginShow}
+                onHide={() => setLoginShow(false)}
+                showSignup={() => setSignupShow(true)}
+            />
+            <SignUpModal
+                show={signupShow}
+                onHide={() => setSignupShow(false)}
+                showLogin={() => setLoginShow(true)}
             />
         </>
     );

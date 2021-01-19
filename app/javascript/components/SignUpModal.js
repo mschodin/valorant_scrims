@@ -4,14 +4,14 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 function handleSubmit() {
-    console.log("submitted")
+    console.log("signup submitted");
 }
 
-function LoginModal(props) {
+function SignUpModal(props) {
 
-    function handleSignup() {
+    function handleLogin() {
         props.onHide();
-        props.showSignup();
+        props.showLogin();
     }
 
     return (
@@ -23,7 +23,7 @@ function LoginModal(props) {
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Login
+                    Sign Up
                 </Modal.Title>
             </Modal.Header>
             <Form onSubmit={handleSubmit}>
@@ -36,9 +36,13 @@ function LoginModal(props) {
                         <Form.Label>Password</Form.Label>
                         <Form.Control type={"password"} placeholder={"Password"} />
                     </Form.Group>
+                    <Form.Group controlId={"formRetypePassword"}>
+                        <Form.Label>Retype Password</Form.Label>
+                        <Form.Control type={"password"} placeholder={"Password"} />
+                    </Form.Group>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant={"secondary"} type={"reset"} className={'mr-auto'} onClick={handleSignup}>Sign Up</Button>
+                    <Button variant={"secondary"} type={"reset"} className={'mr-auto'} onClick={handleLogin}>Log in</Button>
                     <Button variant={"primary"} type={"submit"}>Submit</Button>
                 </Modal.Footer>
             </Form>
@@ -46,4 +50,4 @@ function LoginModal(props) {
     );
 }
 
-export default LoginModal;
+export default SignUpModal;
