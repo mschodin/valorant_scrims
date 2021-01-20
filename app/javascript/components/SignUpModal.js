@@ -11,8 +11,7 @@ function SignUpModal(props) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log("signup submitted");
-        var token = $('meta[name=csrf-token]').attr('content');
+        let token = $('meta[name=csrf-token]').attr('content');
         let body = JSON.stringify({authenticity_token: token, user: {email: formEmail.value, password: formPassword.value, password_confirmation: formRetypePassword.value}, commit: "Sign up"})
         fetch(props.signup_route, {
             method: 'post',
@@ -23,9 +22,8 @@ function SignUpModal(props) {
             },
             body: body,
         }).then((response) => {
-            console.log(response.status)
             if(response.status === 200) {
-                // window.location.href = '/home'
+                window.location.reload();
             }
         })
     }

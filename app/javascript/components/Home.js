@@ -11,6 +11,7 @@ class Home extends React.Component {
             <div>
                 <NavBar
                     signup_route={this.props.signup_route}
+                    login_route={this.props.login_route}
                     signed_in={this.props.signed_in}
                     logout_route={this.props.logout_route}
                 />

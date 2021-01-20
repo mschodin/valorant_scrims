@@ -13,6 +13,25 @@ function LoginModal(props) {
         props.onHide(true);
     }
 
+    function handleSubmit(e) {
+        e.preventDefault();
+        let token = $('meta[name=csrf-token]').attr('content');
+        let body = JSON.stringify({authenticity_token: token, user: {email: formEmail.value, password: formPassword.value, remember_me: "0"}, commit: "Log in"})
+        fetch(props.login_route, {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'text/html, application/json, application/xhtml+xml, application/xml',
+                'X-CSRF-Token': token
+            },
+            body: body,
+        }).then((response) => {
+            if(response.status === 200) {
+                window.location.reload();
+            }
+        })
+    }
+
     return (
         <Modal
             {...props}

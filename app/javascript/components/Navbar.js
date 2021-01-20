@@ -11,12 +11,14 @@ function NavBar(props) {
     const [signupShow, setSignupShow] = React.useState(false);
 
     function logout() {
-        var token = $('meta[name=csrf-token]').attr('content');
+        let token = $('meta[name=csrf-token]').attr('content');
         fetch(props.logout_route, {
             method: 'delete',
             headers: {
                 'X-CSRF-Token': token
             }
+        }).then(() => {
+            window.location.reload();
         })
     }
 
@@ -55,6 +57,7 @@ function NavBar(props) {
                     setLoginShow(false);
                     setSignupShow(showSignup);
                 }}
+                login_route={props.login_route}
             />
             <SignUpModal
                 show={signupShow}
