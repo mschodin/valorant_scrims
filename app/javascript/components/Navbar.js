@@ -11,8 +11,12 @@ function NavBar(props) {
     const [signupShow, setSignupShow] = React.useState(false);
 
     function logout() {
+        var token = $('meta[name=csrf-token]').attr('content');
         fetch(props.logout_route, {
-            method: 'delete'
+            method: 'delete',
+            headers: {
+                'X-CSRF-Token': token
+            }
         })
     }
 
@@ -44,17 +48,20 @@ function NavBar(props) {
                 </Nav>
 
                 {button}
-                {/*<Button onClick={() => setLoginShow(true)} variant={'dark'}>Login</Button>*/}
             </Navbar>
             <LoginModal
                 show={loginShow}
-                onHide={() => setLoginShow(false)}
-                showSignup={() => setSignupShow(true)}
+                onHide={(showSignup) => {
+                    setLoginShow(false);
+                    setSignupShow(showSignup);
+                }}
             />
             <SignUpModal
                 show={signupShow}
-                onHide={() => setSignupShow(false)}
-                showLogin={() => setLoginShow(true)}
+                onHide={(showLogin) => {
+                    setSignupShow(false);
+                    setLoginShow(showLogin);
+                }}
                 signup_route={props.signup_route}
             />
         </>

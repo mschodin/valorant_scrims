@@ -6,17 +6,14 @@ import Form from 'react-bootstrap/Form';
 function SignUpModal(props) {
 
     function handleLogin() {
-        props.onHide();
-        props.showLogin();
+        props.onHide(true);
     }
 
     function handleSubmit(e) {
         e.preventDefault();
         console.log("signup submitted");
         var token = $('meta[name=csrf-token]').attr('content');
-        console.log(token)
-        console.log(formEmail)
-        let body = JSON.stringify({authenticity_token: token, user: {email: "test@gmail.com", password: "testPass", password_confirmation: "testPass"}, commit: "Sign up"})
+        let body = JSON.stringify({authenticity_token: token, user: {email: formEmail.value, password: formPassword.value, password_confirmation: formRetypePassword.value}, commit: "Sign up"})
         fetch(props.signup_route, {
             method: 'post',
             headers: {
@@ -25,7 +22,12 @@ function SignUpModal(props) {
                 'X-CSRF-Token': token
             },
             body: body,
-        }).then((response) => { console.log("responded") })
+        }).then((response) => {
+            console.log(response.status)
+            if(response.status === 200) {
+                // window.location.href = '/home'
+            }
+        })
     }
 
     return (

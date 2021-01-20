@@ -10,8 +10,7 @@ function handleSubmit() {
 function LoginModal(props) {
 
     function handleSignup() {
-        props.onHide();
-        props.showSignup();
+        props.onHide(true);
     }
 
     return (
