@@ -9,7 +9,12 @@ class Home extends React.Component {
     render() {
         return(
             <div>
-                <NavBar/>
+                <NavBar
+                    signup_route={this.props.signup_route}
+                    login_route={this.props.login_route}
+                    signed_in={this.props.signed_in}
+                    logout_route={this.props.logout_route}
+                />
                 <p>
                     You are on the home page!
                 </p>
