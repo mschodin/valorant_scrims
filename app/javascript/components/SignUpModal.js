@@ -3,15 +3,29 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-function handleSubmit() {
-    console.log("signup submitted");
-}
-
 function SignUpModal(props) {
 
     function handleLogin() {
         props.onHide();
         props.showLogin();
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        console.log("signup submitted");
+        var token = $('meta[name=csrf-token]').attr('content');
+        console.log(token)
+        console.log(formEmail)
+        let body = JSON.stringify({authenticity_token: token, user: {email: "test@gmail.com", password: "testPass", password_confirmation: "testPass"}, commit: "Sign up"})
+        fetch(props.signup_route, {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'text/html, application/json, application/xhtml+xml, application/xml',
+                'X-CSRF-Token': token
+            },
+            body: body,
+        }).then((response) => { console.log("responded") })
     }
 
     return (
