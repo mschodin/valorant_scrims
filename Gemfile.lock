@@ -248,7 +248,6 @@ GEM
       execjs
       railties (>= 3.2)
       tilt
-    redis (4.2.5)
     regexp_parser (1.8.2)
     responders (3.0.1)
       actionpack (>= 5.0)
@@ -364,7 +363,6 @@ DEPENDENCIES
   rails-controller-testing
   rails_12factor
   react-rails
-  redis (~> 4.0)
   responders
   rspec (~> 3.5)
   rspec-expectations
