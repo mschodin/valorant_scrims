@@ -91,4 +91,17 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.action_mailer.smtp_settings = {
+      address: "smtp.gmail.com",
+      port: 587,
+      domain: "gmail.com",
+      authentication: "plain",
+      enable_starttls_auto: true,
+      user_name: ENV["VAL_GMAIL_USER"],
+      password:ENV["VAL_GMAIL_PASS"]
+  }
+  # doesn't have to be Heroku, but you get the idea.
+  config.action_mailer.default_url_options = { :host => 'scrub-garden-valorant-scrims.herokuapp.com' }
+
 end

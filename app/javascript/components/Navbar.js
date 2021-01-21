@@ -58,6 +58,7 @@ function NavBar(props) {
                     setSignupShow(showSignup);
                 }}
                 login_route={props.login_route}
+                reset_password={props.reset_password}
             />
             <SignUpModal
                 show={signupShow}
