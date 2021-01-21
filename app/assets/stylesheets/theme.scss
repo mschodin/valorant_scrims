@@ -4,12 +4,4 @@ $theme-colors: (
         "dark": #363636
 );
 
-$font-stack: Roboto, sans-serif;
-$background-color: #363636;
-
-body {
-  background-color: $background-color;
-  font-family: 100% $font-stack;
-}
-
 @import "../../../node_modules/bootstrap/scss/bootstrap";
