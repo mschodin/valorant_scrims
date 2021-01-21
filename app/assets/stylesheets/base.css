@@ -1,18 +1,10 @@
-body {
-    background-color: #363636;
-    font-family: 'Roboto', sans-serif;
-}
+/*body {*/
+/*    background-color: #363636;*/
+/*    font-family: 'Roboto', sans-serif;*/
+/*}*/
 
 .logo {
     margin: -10px;
-}
-
-.active {
-    color: blue;
-}
-
-.inactive {
-    color: white;
 }
 
 .nav-link{
