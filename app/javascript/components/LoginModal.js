@@ -32,6 +32,21 @@ function LoginModal(props) {
         })
     }
 
+    function handleForgotPassword(e) {
+        e.preventDefault();
+        let token = $('meta[name=csrf-token]').attr('content');
+        let body = JSON.stringify({authenticity_token: token, user: {email: formEmail.value}});
+        fetch(props.reset_password, {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'text/html, application/json, application/xhtml+xml, application/xml',
+                'X-CSRF-Token': token
+            },
+            body: body,
+        })
+    }
+
     return (
         <Modal
             {...props}
@@ -54,6 +69,7 @@ function LoginModal(props) {
                         <Form.Label>Password</Form.Label>
                         <Form.Control type={"password"} placeholder={"Password"} />
                     </Form.Group>
+                    <a href={""} onClick={handleForgotPassword}>Forgot password?</a>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant={"secondary"} type={"reset"} className={'mr-auto'} onClick={handleSignup}>Sign Up</Button>
