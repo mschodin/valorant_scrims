@@ -23,9 +23,12 @@ function NavBar(props) {
     }
 
     let button;
+    let email;
     if(props.signed_in) {
+        email = <div style={{marginRight: '15px', color: 'white'}}> {props.current_user} </div>
         button = <Button onClick={logout} variant={'dark'}>Logout</Button>
     } else {
+        email = "";
         button = <Button onClick={() => setLoginShow(true)} variant={'dark'}>Login</Button>
     }
 
@@ -49,6 +52,7 @@ function NavBar(props) {
                     <Nav.Link href={"#your_scrims"}>Your Scrims</Nav.Link>
                 </Nav>
 
+                {email}
                 {button}
             </Navbar>
             <LoginModal
@@ -59,6 +63,7 @@ function NavBar(props) {
                 }}
                 login_route={props.login_route}
                 reset_password={props.reset_password}
+                signed_in = {props.signed_in}
             />
             <SignUpModal
                 show={signupShow}

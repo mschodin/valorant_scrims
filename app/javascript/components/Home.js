@@ -15,6 +15,7 @@ class Home extends React.Component {
                     signed_in={this.props.signed_in}
                     logout_route={this.props.logout_route}
                     reset_password={this.props.reset_password}
+                    current_user={this.props.current_user}
                 />
                 <p>
                     You are on the home page!

@@ -3,11 +3,9 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-function handleSubmit() {
-    console.log("submitted")
-}
-
 function LoginModal(props) {
+
+    const [errorMessage, setErrorMessage] = React.useState("");
 
     function handleSignup() {
         props.onHide(true);
@@ -26,7 +24,14 @@ function LoginModal(props) {
             },
             body: body,
         }).then((response) => {
-            if(response.status === 200) {
+            console.log(props.signed_in);
+            if(props.signed_in === false)
+            {
+                setErrorMessage("Invalid Email or Password");
+            }
+            else
+            {
+                setErrorMessage("");
                 window.location.reload();
             }
         })
@@ -69,6 +74,7 @@ function LoginModal(props) {
                         <Form.Label>Password</Form.Label>
                         <Form.Control type={"password"} placeholder={"Password"} />
                     </Form.Group>
+                    <div style={{color: "red"}}>{errorMessage}</div>
                     <a href={""} onClick={handleForgotPassword}>Forgot password?</a>
                 </Modal.Body>
                 <Modal.Footer>
