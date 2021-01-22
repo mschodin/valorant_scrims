@@ -90,7 +90,7 @@ function LoginModal(props) {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant={"secondary"} type={"reset"} className={'mr-auto'} onClick={handleSignup}>Sign Up</Button>
-                    <Button variant={"primary"} type={"submit"}>Submit</Button>
+                    <Button variant={"primary"} type={"submit"}>Log in</Button>
                 </Modal.Footer>
             </Form>
         </Modal>

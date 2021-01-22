@@ -72,6 +72,7 @@ function NavBar(props) {
                     setLoginShow(showLogin);
                 }}
                 signup_route={props.signup_route}
+                exists_route={props.exists_route}
             />
         </>
     );

@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :home
   root :to => redirect('/home')
   get 'status', to: 'session#status'
+  post 'exists', to: 'session#exists'
 end
