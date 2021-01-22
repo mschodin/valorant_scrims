@@ -63,7 +63,7 @@ function NavBar(props) {
                 }}
                 login_route={props.login_route}
                 reset_password={props.reset_password}
-                signed_in = {props.signed_in}
+                status_route={props.status_route}
             />
             <SignUpModal
                 show={signupShow}

@@ -24,17 +24,28 @@ function LoginModal(props) {
             },
             body: body,
         }).then((response) => {
-            console.log(props.signed_in);
-            if(props.signed_in === false)
-            {
+            checkLoginStatus();
+        })
+    }
+
+    function checkLoginStatus() {
+        let token = $('meta[name=csrf-token]').attr('content');
+        fetch(props.status_route, {
+            method: 'get',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'text/html, application/json, application/xhtml+xml, application/xml',
+                'X-CSRF-Token': token
+            },
+        }).then(response => response.json()).then((response) => {
+            if(response["session_status"] === false){
                 setErrorMessage("Invalid Email or Password");
-            }
-            else
-            {
+            } else {
                 setErrorMessage("");
                 window.location.reload();
             }
         })
+
     }
 
     function handleForgotPassword(e) {

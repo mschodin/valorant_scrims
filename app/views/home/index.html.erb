@@ -10,10 +10,6 @@
   <% email = "" %>
 <% end %>
 
-<%# notification = notice unless notice.nil? %>
-<%# notification = alert unless alert.nil? %>
-<%# notification = notice.to_s if notice %>
-<%# notification = alert.to_s if alert %>
 <%= react_component("Home", {
     signup_route: user_registration_path,
     login_route: user_session_path,
@@ -21,4 +17,5 @@
     logout_route: destroy_user_session_path,
     reset_password: user_password_path,
     current_user: email,
+    status_route: status_path,
 })%>
