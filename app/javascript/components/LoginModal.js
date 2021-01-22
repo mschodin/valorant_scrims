@@ -8,7 +8,7 @@ function LoginModal(props) {
     const [errorMessage, setErrorMessage] = React.useState("");
 
     function handleSignup() {
-        props.onHide(true);
+        props.onHide(true, false);
     }
 
     function handleSubmit(e) {
@@ -50,17 +50,7 @@ function LoginModal(props) {
 
     function handleForgotPassword(e) {
         e.preventDefault();
-        let token = $('meta[name=csrf-token]').attr('content');
-        let body = JSON.stringify({authenticity_token: token, user: {email: formEmail.value}});
-        fetch(props.reset_password, {
-            method: 'post',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'text/html, application/json, application/xhtml+xml, application/xml',
-                'X-CSRF-Token': token
-            },
-            body: body,
-        })
+        props.onHide(false, true);
     }
 
     return (

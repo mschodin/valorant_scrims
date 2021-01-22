@@ -5,10 +5,12 @@ import sg_logo from '/app/assets/images/sg_logo.png';
 import Button from 'react-bootstrap/Button';
 import LoginModal from './LoginModal'
 import SignUpModal from "./SignUpModal";
+import ForgotPasswordModal from "./ForgotPasswordModal";
 
 function NavBar(props) {
     const [loginShow, setLoginShow] = React.useState(false);
     const [signupShow, setSignupShow] = React.useState(false);
+    const [forgotPasswordShow, setForgotPasswordShow] = React.useState(false);
 
     function logout() {
         let token = $('meta[name=csrf-token]').attr('content');
@@ -57,12 +59,12 @@ function NavBar(props) {
             </Navbar>
             <LoginModal
                 show={loginShow}
-                onHide={(showSignup) => {
+                onHide={(showSignup, showForgotPassword) => {
                     setLoginShow(false);
                     setSignupShow(showSignup);
+                    setForgotPasswordShow(showForgotPassword)
                 }}
                 login_route={props.login_route}
-                reset_password={props.reset_password}
                 status_route={props.status_route}
             />
             <SignUpModal
@@ -73,6 +75,14 @@ function NavBar(props) {
                 }}
                 signup_route={props.signup_route}
                 exists_route={props.exists_route}
+            />
+            <ForgotPasswordModal
+                show={forgotPasswordShow}
+                onHide={(showLogin) => {
+                    setForgotPasswordShow(false);
+                    setLoginShow(showLogin)
+                }}
+                reset_password={props.reset_password}
             />
         </>
     );
