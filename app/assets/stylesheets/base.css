@@ -13,3 +13,10 @@ body {
 .nav-link:hover{
     color: white !important;
 }
+
+div.reset{
+    width: 30%;
+    margin: auto;
+    padding-top: 100px;
+    color: #8cc63f;
+}
