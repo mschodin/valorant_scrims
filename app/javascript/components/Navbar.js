@@ -37,7 +37,7 @@ function NavBar(props) {
     return (
         <>
             <Navbar bg="primary">
-                <Navbar.Brand href="#home">
+                <Navbar.Brand href="/home">
                     <img
                         src={sg_logo}
                         width="50"
@@ -47,13 +47,12 @@ function NavBar(props) {
                     />
                 </Navbar.Brand>
                 <Nav className="mr-auto">
-                    <Nav.Link href={"#schedule"}>Schedule</Nav.Link>
-                    <Nav.Link href={"#teams"}>Teams</Nav.Link>
-                    <Nav.Link href={"#profile"}>Profile</Nav.Link>
-                    <Nav.Link href={"#messages"}>Messages</Nav.Link>
-                    <Nav.Link href={"#your_scrims"}>Your Scrims</Nav.Link>
+                    <Nav.Link href={"/schedule"}>Schedule</Nav.Link>
+                    <Nav.Link href={"/teams"}>Teams</Nav.Link>
+                    <Nav.Link href={"/profile"}>Profile</Nav.Link>
+                    <Nav.Link href={"/messages"}>Messages</Nav.Link>
+                    <Nav.Link href={"/your_scrims"}>Your Scrims</Nav.Link>
                 </Nav>
-
                 {email}
                 {button}
             </Navbar>

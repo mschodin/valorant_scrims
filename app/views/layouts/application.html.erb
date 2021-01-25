@@ -11,8 +11,21 @@
 </head>
 
 <body>
-<!--<p class="notice"><%#= notice %></p>-->
-<!--<p class="alert"><%#= alert %></p>-->
+<% if user_signed_in? %>
+  <% email = current_user.email %>
+<% else %>
+  <% email = "" %>
+<% end %>
+<%= react_component("Navbar", {
+    signup_route: user_registration_path,
+    login_route: user_session_path,
+    signed_in: user_signed_in?,
+    logout_route: destroy_user_session_path,
+    reset_password: user_password_path,
+    current_user: email,
+    status_route: status_path,
+    exists_route: exists_path
+})%>
 <%= yield %>
 </body>
 </html>
