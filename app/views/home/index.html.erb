@@ -4,10 +4,19 @@
 <!--  Not logged in-->
 <%# end %>
 
+<% if user_signed_in? %>
+  <% email = current_user.email %>
+<% else %>
+  <% email = "" %>
+<% end %>
+
 <%= react_component("Home", {
     signup_route: user_registration_path,
     login_route: user_session_path,
     signed_in: user_signed_in?,
     logout_route: destroy_user_session_path,
-    reset_password: user_password_path
+    reset_password: user_password_path,
+    current_user: email,
+    status_route: status_path,
+    exists_route: exists_path
 })%>

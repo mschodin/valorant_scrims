@@ -5,10 +5,12 @@ import sg_logo from '/app/assets/images/sg_logo.png';
 import Button from 'react-bootstrap/Button';
 import LoginModal from './LoginModal'
 import SignUpModal from "./SignUpModal";
+import ForgotPasswordModal from "./ForgotPasswordModal";
 
 function NavBar(props) {
     const [loginShow, setLoginShow] = React.useState(false);
     const [signupShow, setSignupShow] = React.useState(false);
+    const [forgotPasswordShow, setForgotPasswordShow] = React.useState(false);
 
     function logout() {
         let token = $('meta[name=csrf-token]').attr('content');
@@ -23,9 +25,12 @@ function NavBar(props) {
     }
 
     let button;
+    let email;
     if(props.signed_in) {
+        email = <div style={{marginRight: '15px', color: 'white'}}> {props.current_user} </div>
         button = <Button onClick={logout} variant={'dark'}>Logout</Button>
     } else {
+        email = "";
         button = <Button onClick={() => setLoginShow(true)} variant={'dark'}>Login</Button>
     }
 
@@ -49,16 +54,18 @@ function NavBar(props) {
                     <Nav.Link href={"#your_scrims"}>Your Scrims</Nav.Link>
                 </Nav>
 
+                {email}
                 {button}
             </Navbar>
             <LoginModal
                 show={loginShow}
-                onHide={(showSignup) => {
+                onHide={(showSignup, showForgotPassword) => {
                     setLoginShow(false);
                     setSignupShow(showSignup);
+                    setForgotPasswordShow(showForgotPassword)
                 }}
                 login_route={props.login_route}
-                reset_password={props.reset_password}
+                status_route={props.status_route}
             />
             <SignUpModal
                 show={signupShow}
@@ -67,6 +74,15 @@ function NavBar(props) {
                     setLoginShow(showLogin);
                 }}
                 signup_route={props.signup_route}
+                exists_route={props.exists_route}
+            />
+            <ForgotPasswordModal
+                show={forgotPasswordShow}
+                onHide={(showLogin) => {
+                    setForgotPasswordShow(false);
+                    setLoginShow(showLogin)
+                }}
+                reset_password={props.reset_password}
             />
         </>
     );

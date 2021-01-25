@@ -102,6 +102,6 @@ Rails.application.configure do
       password:ENV["VAL_GMAIL_PASS"]
   }
   # doesn't have to be Heroku, but you get the idea.
-  config.action_mailer.default_url_options = { :host => 'scrub-garden-valorant-scrims.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'scrub-garden-valorant-scrims.herokuapp.com', protocol: 'https' }
 
 end

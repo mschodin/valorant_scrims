@@ -1,18 +1,9 @@
 body {
     background-color: #363636;
-    font-family: 'Roboto', sans-serif;
 }
 
 .logo {
     margin: -10px;
-}
-
-.active {
-    color: blue;
-}
-
-.inactive {
-    color: white;
 }
 
 .nav-link{
@@ -21,4 +12,11 @@ body {
 
 .nav-link:hover{
     color: white !important;
+}
+
+div.reset{
+    width: 30%;
+    margin: auto;
+    padding-top: 100px;
+    color: #8cc63f;
 }

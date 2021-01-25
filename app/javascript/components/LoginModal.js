@@ -3,14 +3,12 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-function handleSubmit() {
-    console.log("submitted")
-}
-
 function LoginModal(props) {
 
+    const [errorMessage, setErrorMessage] = React.useState("");
+
     function handleSignup() {
-        props.onHide(true);
+        props.onHide(true, false);
     }
 
     function handleSubmit(e) {
@@ -26,25 +24,33 @@ function LoginModal(props) {
             },
             body: body,
         }).then((response) => {
-            if(response.status === 200) {
-                window.location.reload();
-            }
+            checkLoginStatus();
         })
     }
 
-    function handleForgotPassword(e) {
-        e.preventDefault();
+    function checkLoginStatus() {
         let token = $('meta[name=csrf-token]').attr('content');
-        let body = JSON.stringify({authenticity_token: token, user: {email: formEmail.value}});
-        fetch(props.reset_password, {
-            method: 'post',
+        fetch(props.status_route, {
+            method: 'get',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'text/html, application/json, application/xhtml+xml, application/xml',
                 'X-CSRF-Token': token
             },
-            body: body,
+        }).then(response => response.json()).then((response) => {
+            if(response["session_status"] === false){
+                setErrorMessage("Invalid Email or Password");
+            } else {
+                setErrorMessage("");
+                window.location.reload();
+            }
         })
+
+    }
+
+    function handleForgotPassword(e) {
+        e.preventDefault();
+        props.onHide(false, true);
     }
 
     return (
@@ -69,11 +75,12 @@ function LoginModal(props) {
                         <Form.Label>Password</Form.Label>
                         <Form.Control type={"password"} placeholder={"Password"} />
                     </Form.Group>
+                    <div style={{color: "red"}}>{errorMessage}</div>
                     <a href={""} onClick={handleForgotPassword}>Forgot password?</a>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant={"secondary"} type={"reset"} className={'mr-auto'} onClick={handleSignup}>Sign Up</Button>
-                    <Button variant={"primary"} type={"submit"}>Submit</Button>
+                    <Button variant={"primary"} type={"submit"}>Log in</Button>
                 </Modal.Footer>
             </Form>
         </Modal>
