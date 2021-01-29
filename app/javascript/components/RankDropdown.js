@@ -26,34 +26,33 @@ import immortal from '/app/assets/images/ranks/immortal3.png';
 import radiant from '/app/assets/images/ranks/radiant.png';
 
 function RankDropdown(props) {
-
     return (
         <Dropdown className={'rank_dropdown'}>
             <Dropdown.Toggle variant={'light btn-sm'} id={'rank_dropdown'}>
-                <Image className={'rank_image'} src={iron1}/>
+                <Image className={'rank_options'} src={props.selected_rank}/>
             </Dropdown.Toggle>
 
             <Dropdown.Menu className={'rank_dropdown_menu'} bsPrefix={'rank_dropdown_menu'}>
                 <Dropdown.Item><Image className={'rank_options'} src={iron1}/></Dropdown.Item>
                 <Dropdown.Item><Image className={'rank_options'} src={iron2}/></Dropdown.Item>
                 <Dropdown.Item><Image className={'rank_options'} src={iron3}/></Dropdown.Item>
-                <Dropdown.Item><Image className={'rank_image'} src={bronze1}/></Dropdown.Item>
-                <Dropdown.Item><Image className={'rank_image'} src={bronze2}/></Dropdown.Item>
-                <Dropdown.Item><Image className={'rank_image'} src={bronze3}/></Dropdown.Item>
-                <Dropdown.Item><Image className={'rank_image'} src={silver1}/></Dropdown.Item>
-                <Dropdown.Item><Image className={'rank_image'} src={silver2}/></Dropdown.Item>
-                <Dropdown.Item><Image className={'rank_image'} src={silver3}/></Dropdown.Item>
-                <Dropdown.Item><Image className={'rank_image'} src={gold1}/></Dropdown.Item>
-                <Dropdown.Item><Image className={'rank_image'} src={gold2}/></Dropdown.Item>
-                <Dropdown.Item><Image className={'rank_image'} src={gold3}/></Dropdown.Item>
-                <Dropdown.Item><Image className={'rank_image'} src={plat1}/></Dropdown.Item>
-                <Dropdown.Item><Image className={'rank_image'} src={plat2}/></Dropdown.Item>
-                <Dropdown.Item><Image className={'rank_image'} src={plat3}/></Dropdown.Item>
-                <Dropdown.Item><Image className={'rank_image'} src={diamond1}/></Dropdown.Item>
-                <Dropdown.Item><Image className={'rank_image'} src={diamond2}/></Dropdown.Item>
-                <Dropdown.Item><Image className={'rank_image'} src={diamond3}/></Dropdown.Item>
-                <Dropdown.Item><Image className={'rank_image'} src={immortal}/></Dropdown.Item>
-                <Dropdown.Item><Image className={'rank_image'} src={radiant}/></Dropdown.Item>
+                <Dropdown.Item><Image className={'rank_options'} src={bronze1}/></Dropdown.Item>
+                <Dropdown.Item><Image className={'rank_options'} src={bronze2}/></Dropdown.Item>
+                <Dropdown.Item><Image className={'rank_options'} src={bronze3}/></Dropdown.Item>
+                <Dropdown.Item><Image className={'rank_options'} src={silver1}/></Dropdown.Item>
+                <Dropdown.Item><Image className={'rank_options'} src={silver2}/></Dropdown.Item>
+                <Dropdown.Item><Image className={'rank_options'} src={silver3}/></Dropdown.Item>
+                <Dropdown.Item><Image className={'rank_options'} src={gold1}/></Dropdown.Item>
+                <Dropdown.Item><Image className={'rank_options'} src={gold2}/></Dropdown.Item>
+                <Dropdown.Item><Image className={'rank_options'} src={gold3}/></Dropdown.Item>
+                <Dropdown.Item onClick={()=>props.changeRank(plat1)}><Image className={'rank_options'} src={plat1}/></Dropdown.Item>
+                <Dropdown.Item><Image className={'rank_options'} src={plat2}/></Dropdown.Item>
+                <Dropdown.Item><Image className={'rank_options'} src={plat3}/></Dropdown.Item>
+                <Dropdown.Item><Image className={'rank_options'} src={diamond1}/></Dropdown.Item>
+                <Dropdown.Item onClick={()=>props.changeRank(diamond2)}><Image className={'rank_options'} src={diamond2}/></Dropdown.Item>
+                <Dropdown.Item><Image className={'rank_options'} src={diamond3}/></Dropdown.Item>
+                <Dropdown.Item><Image className={'rank_options'} src={immortal}/></Dropdown.Item>
+                <Dropdown.Item><Image className={'rank_options'} src={radiant}/></Dropdown.Item>
             </Dropdown.Menu>
         </Dropdown>
     );
