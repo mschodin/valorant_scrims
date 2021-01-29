@@ -39,9 +39,9 @@ class Profile extends React.Component {
 
     submitChanges = (e) => {
         e.preventDefault();
-        console.log('name changed');
         this.setState({
-            edit: false
+            edit: false,
+            name: newName.value
         });
     }
 
