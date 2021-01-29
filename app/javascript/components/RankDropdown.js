@@ -33,26 +33,26 @@ function RankDropdown(props) {
             </Dropdown.Toggle>
 
             <Dropdown.Menu className={'rank_dropdown_menu'} bsPrefix={'rank_dropdown_menu'}>
-                <Dropdown.Item><Image className={'rank_options'} src={iron1}/></Dropdown.Item>
-                <Dropdown.Item><Image className={'rank_options'} src={iron2}/></Dropdown.Item>
-                <Dropdown.Item><Image className={'rank_options'} src={iron3}/></Dropdown.Item>
-                <Dropdown.Item><Image className={'rank_options'} src={bronze1}/></Dropdown.Item>
-                <Dropdown.Item><Image className={'rank_options'} src={bronze2}/></Dropdown.Item>
-                <Dropdown.Item><Image className={'rank_options'} src={bronze3}/></Dropdown.Item>
-                <Dropdown.Item><Image className={'rank_options'} src={silver1}/></Dropdown.Item>
-                <Dropdown.Item><Image className={'rank_options'} src={silver2}/></Dropdown.Item>
-                <Dropdown.Item><Image className={'rank_options'} src={silver3}/></Dropdown.Item>
-                <Dropdown.Item><Image className={'rank_options'} src={gold1}/></Dropdown.Item>
-                <Dropdown.Item><Image className={'rank_options'} src={gold2}/></Dropdown.Item>
-                <Dropdown.Item><Image className={'rank_options'} src={gold3}/></Dropdown.Item>
+                <Dropdown.Item onClick={()=>props.changeRank(iron1)}><Image className={'rank_options'} src={iron1}/></Dropdown.Item>
+                <Dropdown.Item onClick={()=>props.changeRank(iron2)}><Image className={'rank_options'} src={iron2}/></Dropdown.Item>
+                <Dropdown.Item onClick={()=>props.changeRank(iron3)}><Image className={'rank_options'} src={iron3}/></Dropdown.Item>
+                <Dropdown.Item onClick={()=>props.changeRank(bronze1)}><Image className={'rank_options'} src={bronze1}/></Dropdown.Item>
+                <Dropdown.Item onClick={()=>props.changeRank(bronze2)}><Image className={'rank_options'} src={bronze2}/></Dropdown.Item>
+                <Dropdown.Item onClick={()=>props.changeRank(bronze3)}><Image className={'rank_options'} src={bronze3}/></Dropdown.Item>
+                <Dropdown.Item onClick={()=>props.changeRank(silver1)}><Image className={'rank_options'} src={silver1}/></Dropdown.Item>
+                <Dropdown.Item onClick={()=>props.changeRank(silver2)}><Image className={'rank_options'} src={silver2}/></Dropdown.Item>
+                <Dropdown.Item onClick={()=>props.changeRank(silver3)}><Image className={'rank_options'} src={silver3}/></Dropdown.Item>
+                <Dropdown.Item onClick={()=>props.changeRank(gold1)}><Image className={'rank_options'} src={gold1}/></Dropdown.Item>
+                <Dropdown.Item onClick={()=>props.changeRank(gold2)}><Image className={'rank_options'} src={gold2}/></Dropdown.Item>
+                <Dropdown.Item onClick={()=>props.changeRank(gold3)}><Image className={'rank_options'} src={gold3}/></Dropdown.Item>
                 <Dropdown.Item onClick={()=>props.changeRank(plat1)}><Image className={'rank_options'} src={plat1}/></Dropdown.Item>
-                <Dropdown.Item><Image className={'rank_options'} src={plat2}/></Dropdown.Item>
-                <Dropdown.Item><Image className={'rank_options'} src={plat3}/></Dropdown.Item>
-                <Dropdown.Item><Image className={'rank_options'} src={diamond1}/></Dropdown.Item>
+                <Dropdown.Item onClick={()=>props.changeRank(plat2)}><Image className={'rank_options'} src={plat2}/></Dropdown.Item>
+                <Dropdown.Item onClick={()=>props.changeRank(plat3)}><Image className={'rank_options'} src={plat3}/></Dropdown.Item>
+                <Dropdown.Item onClick={()=>props.changeRank(diamond1)}><Image className={'rank_options'} src={diamond1}/></Dropdown.Item>
                 <Dropdown.Item onClick={()=>props.changeRank(diamond2)}><Image className={'rank_options'} src={diamond2}/></Dropdown.Item>
-                <Dropdown.Item><Image className={'rank_options'} src={diamond3}/></Dropdown.Item>
-                <Dropdown.Item><Image className={'rank_options'} src={immortal}/></Dropdown.Item>
-                <Dropdown.Item><Image className={'rank_options'} src={radiant}/></Dropdown.Item>
+                <Dropdown.Item onClick={()=>props.changeRank(diamond3)}><Image className={'rank_options'} src={diamond3}/></Dropdown.Item>
+                <Dropdown.Item onClick={()=>props.changeRank(immortal)}><Image className={'rank_options'} src={immortal}/></Dropdown.Item>
+                <Dropdown.Item onClick={()=>props.changeRank(radiant)}><Image className={'rank_options'} src={radiant}/></Dropdown.Item>
             </Dropdown.Menu>
         </Dropdown>
     );
