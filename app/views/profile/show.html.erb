@@ -1,4 +1,7 @@
 <%= react_component("Profile", {
     player_name: @profile.player_name,
-    player_rank: @profile.player_rank
+    player_rank: @profile.player_rank,
+    player_id: @profile.id,
+    change_name_route: profile_path,
+    signed_in_user: current_user.id
 })%>

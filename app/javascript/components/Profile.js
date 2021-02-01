@@ -5,26 +5,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '/app/assets/stylesheets/theme.scss';
 import '/app/assets/stylesheets/base.css';
 import RankDropdown from "./RankDropdown";
-import iron1 from '/app/assets/images/ranks/iron1.png';
-import iron2 from '/app/assets/images/ranks/iron2.png';
-import iron3 from '/app/assets/images/ranks/iron3.png';
-import bronze1 from '/app/assets/images/ranks/bronze1.png';
-import bronze2 from '/app/assets/images/ranks/bronze2.png';
-import bronze3 from '/app/assets/images/ranks/bronze3.png';
-import silver1 from '/app/assets/images/ranks/silver1.png';
-import silver2 from '/app/assets/images/ranks/silver2.png';
-import silver3 from '/app/assets/images/ranks/silver3.png';
-import gold1 from '/app/assets/images/ranks/gold1.png';
-import gold2 from '/app/assets/images/ranks/gold2.png';
-import gold3 from '/app/assets/images/ranks/gold3.png';
-import plat1 from '/app/assets/images/ranks/plat1.png';
-import plat2 from '/app/assets/images/ranks/plat2.png';
-import plat3 from '/app/assets/images/ranks/plat3.png';
-import diamond1 from '/app/assets/images/ranks/diamond1.png';
-import diamond2 from '/app/assets/images/ranks/diamond2.png';
-import diamond3 from '/app/assets/images/ranks/diamond3.png';
-import immortal from '/app/assets/images/ranks/immortal3.png';
-import radiant from '/app/assets/images/ranks/radiant.png';
 
 class Profile extends React.Component {
     constructor(props) {
@@ -43,6 +23,19 @@ class Profile extends React.Component {
             edit: false,
             name: newName.value
         });
+        let token = $('meta[name=csrf-token]').attr('content');
+        let body = JSON.stringify({authenticity_token: token, profile_name: newName.value, profile_rank: this.state.rank})
+        fetch(this.props.change_name_route, {
+            method: 'put',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'text/html, application/json, application/xhtml+xml, application/xml',
+                'X-CSRF-Token': token
+            },
+            body: body,
+        }).then((response) => {
+            window.location.href = response.url
+        })
     }
 
     changeRank = (newRank) => {
@@ -62,7 +55,7 @@ class Profile extends React.Component {
             player_rank = <RankDropdown selected_rank={this.state.rank} changeRank={this.changeRank}/>
         } else {
             profile_name = <h3 className={'profile_name'}>{this.state.name}</h3>
-            edit_button = <Button variant={'primary'} onClick={() => {this.setState({edit: !this.state.edit})}}>Edit</Button>
+            edit_button = <Button disabled={this.props.signed_in_user !== this.props.player_id} variant={'primary'} onClick={() => {this.setState({edit: !this.state.edit})}}>Edit</Button>
             player_rank = <Image className={'rank_image'} src={this.state.rank}/>
         }
 

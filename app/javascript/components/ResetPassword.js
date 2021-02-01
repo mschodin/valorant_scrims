@@ -47,13 +47,6 @@ class ResetPassword extends React.Component {
                 },
                 body: body,
             }).then(response => response.json()).then((response) => {
-                // console.log(response["exists_status"])
-                // if(response["exists_status"] === true) {
-                //     setErrorMessage("User already exists")
-                // } else {
-                //     handleSubmit()
-                // }
-
             })
         }
 

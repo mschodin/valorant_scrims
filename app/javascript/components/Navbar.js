@@ -49,7 +49,7 @@ function NavBar(props) {
                 <Nav className="mr-auto">
                     <Nav.Link href={"/schedule"}>Schedule</Nav.Link>
                     <Nav.Link href={"/teams"}>Teams</Nav.Link>
-                    <Nav.Link href={"/profile"}>Profile</Nav.Link>
+                    <Nav.Link href={"/profile/" + props.user_id}>Profile</Nav.Link>
                     <Nav.Link href={"/messages"}>Messages</Nav.Link>
                     <Nav.Link href={"/your_scrims"}>Your Scrims</Nav.Link>
                 </Nav>
