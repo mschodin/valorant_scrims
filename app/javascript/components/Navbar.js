@@ -74,6 +74,7 @@ function NavBar(props) {
                 }}
                 signup_route={props.signup_route}
                 exists_route={props.exists_route}
+                create_profile_route={props.create_profile_route}
             />
             <ForgotPasswordModal
                 show={forgotPasswordShow}

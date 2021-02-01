@@ -32,8 +32,8 @@ class Profile extends React.Component {
         this.state = {
             edit: false,
             image: sg_logo,
-            name: 'PlayerName',
-            rank: iron1
+            name: props.player_name,
+            rank: props.player_rank,
         };
     }
 

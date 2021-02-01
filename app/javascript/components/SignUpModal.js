@@ -2,10 +2,32 @@ import React from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import RankDropdown from "./RankDropdown";
+import iron1 from '/app/assets/images/ranks/iron1.png';
+import iron2 from '/app/assets/images/ranks/iron2.png';
+import iron3 from '/app/assets/images/ranks/iron3.png';
+import bronze1 from '/app/assets/images/ranks/bronze1.png';
+import bronze2 from '/app/assets/images/ranks/bronze2.png';
+import bronze3 from '/app/assets/images/ranks/bronze3.png';
+import silver1 from '/app/assets/images/ranks/silver1.png';
+import silver2 from '/app/assets/images/ranks/silver2.png';
+import silver3 from '/app/assets/images/ranks/silver3.png';
+import gold1 from '/app/assets/images/ranks/gold1.png';
+import gold2 from '/app/assets/images/ranks/gold2.png';
+import gold3 from '/app/assets/images/ranks/gold3.png';
+import plat1 from '/app/assets/images/ranks/plat1.png';
+import plat2 from '/app/assets/images/ranks/plat2.png';
+import plat3 from '/app/assets/images/ranks/plat3.png';
+import diamond1 from '/app/assets/images/ranks/diamond1.png';
+import diamond2 from '/app/assets/images/ranks/diamond2.png';
+import diamond3 from '/app/assets/images/ranks/diamond3.png';
+import immortal from '/app/assets/images/ranks/immortal3.png';
+import radiant from '/app/assets/images/ranks/radiant.png';
 
 function SignUpModal(props) {
 
     const [errorMessage, setErrorMessage] = React.useState("");
+    const [rank, setRank] = React.useState(iron1);
 
     var mediumRegex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
 
@@ -59,10 +81,28 @@ function SignUpModal(props) {
             },
             body: body,
         }).then((response) => {
-            if(response.status === 200) {
-                window.location.reload();
-            }
+            submitProfile();
         })
+    }
+
+    function submitProfile() {
+        let token = $('meta[name=csrf-token]').attr('content');
+        let body = JSON.stringify({authenticity_token: token, player_name: playerName.value, player_rank: rank})
+        fetch(props.create_profile_route, {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'text/html, application/json, application/xhtml+xml, application/xml',
+                'X-CSRF-Token': token
+            },
+            body: body,
+        }).then((response) => {
+            window.location.href = response.url
+        })
+    }
+
+    function changeRank(newRank) {
+        setRank(newRank);
     }
 
     return (
@@ -92,6 +132,11 @@ function SignUpModal(props) {
                         <Form.Control type={"password"} placeholder={"Password"} />
                     </Form.Group>
                     <div style={{color: "red"}}>{errorMessage}</div>
+                    <Form.Group controlId={"playerName"}>
+                        <Form.Label>Player In Game Name</Form.Label>
+                        <Form.Control type={"text"} placeholder={"Player Name"} />
+                    </Form.Group>
+                    <RankDropdown selected_rank={rank} changeRank={changeRank}/>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant={"secondary"} type={"reset"} className={'mr-auto'} onClick={handleLogin}>Log in</Button>
