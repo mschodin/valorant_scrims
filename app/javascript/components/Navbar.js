@@ -26,12 +26,15 @@ function NavBar(props) {
 
     let button;
     let email;
+    let profile_url;
     if(props.signed_in) {
         email = <div style={{marginRight: '15px', color: 'white'}}> {props.current_user} </div>
         button = <Button onClick={logout} variant={'dark'}>Logout</Button>
+        profile_url = props.user_id
     } else {
         email = "";
         button = <Button onClick={() => setLoginShow(true)} variant={'dark'}>Login</Button>
+        profile_url = 1
     }
 
     return (
@@ -49,7 +52,7 @@ function NavBar(props) {
                 <Nav className="mr-auto">
                     <Nav.Link href={"/schedule"}>Schedule</Nav.Link>
                     <Nav.Link href={"/teams"}>Teams</Nav.Link>
-                    <Nav.Link href={"/profile/" + props.user_id}>Profile</Nav.Link>
+                    <Nav.Link href={"/profile/" + profile_url}>Profile</Nav.Link>
                     <Nav.Link href={"/messages"}>Messages</Nav.Link>
                     <Nav.Link href={"/your_scrims"}>Your Scrims</Nav.Link>
                 </Nav>

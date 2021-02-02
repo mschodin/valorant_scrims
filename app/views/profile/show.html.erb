@@ -1,7 +1,13 @@
+<% if user_signed_in? %>
+  <% user_id = current_user.id %>
+<% else %>
+  <% user_id = nil %>
+<% end %>
+
 <%= react_component("Profile", {
     player_name: @profile.player_name,
     player_rank: @profile.player_rank,
     player_id: @profile.id,
     change_name_route: profile_path,
-    signed_in_user: current_user.id
+    signed_in_user: user_id
 })%>

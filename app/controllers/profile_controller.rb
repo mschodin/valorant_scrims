@@ -3,7 +3,11 @@ class ProfileController < ApplicationController
     if params[:id] =~ /\d/ and Profile.exists?(:id => params[:id])
       view_user = params[:id]
     else
-      view_user = current_user.id
+      if user_signed_in?
+        view_user = current_user.id
+      else
+        view_user = 1
+      end
     end
     @profile = Profile.find_by(:user_id => view_user)
   end
