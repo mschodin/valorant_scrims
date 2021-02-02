@@ -37,7 +37,7 @@ function NavBar(props) {
     return (
         <>
             <Navbar bg="primary">
-                <Navbar.Brand href="#home">
+                <Navbar.Brand href="/home">
                     <img
                         src={sg_logo}
                         width="50"
@@ -47,13 +47,12 @@ function NavBar(props) {
                     />
                 </Navbar.Brand>
                 <Nav className="mr-auto">
-                    <Nav.Link href={"#schedule"}>Schedule</Nav.Link>
-                    <Nav.Link href={"#teams"}>Teams</Nav.Link>
-                    <Nav.Link href={"#profile"}>Profile</Nav.Link>
-                    <Nav.Link href={"#messages"}>Messages</Nav.Link>
-                    <Nav.Link href={"#your_scrims"}>Your Scrims</Nav.Link>
+                    <Nav.Link href={"/schedule"}>Schedule</Nav.Link>
+                    <Nav.Link href={"/teams"}>Teams</Nav.Link>
+                    <Nav.Link href={"/profile/" + props.user_id}>Profile</Nav.Link>
+                    <Nav.Link href={"/messages"}>Messages</Nav.Link>
+                    <Nav.Link href={"/your_scrims"}>Your Scrims</Nav.Link>
                 </Nav>
-
                 {email}
                 {button}
             </Navbar>
@@ -75,6 +74,7 @@ function NavBar(props) {
                 }}
                 signup_route={props.signup_route}
                 exists_route={props.exists_route}
+                create_profile_route={props.create_profile_route}
             />
             <ForgotPasswordModal
                 show={forgotPasswordShow}

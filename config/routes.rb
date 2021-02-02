@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   root :to => redirect('/home')
   get 'status', to: 'session#status'
   post 'exists', to: 'session#exists'
+  # get 'profile', to: 'profile#show'
+  resources :profile
 end

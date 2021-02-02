@@ -1,3 +1,0 @@
-class CompletedScrim < ApplicationRecord
-
-end

@@ -20,3 +20,59 @@ div.reset{
     padding-top: 100px;
     color: #8cc63f;
 }
+
+div.profile{
+    color: white;
+    width: 50%;
+    margin: auto;
+    padding-top: 50px;
+}
+
+.profile_picture_and_name {
+    display: flex;
+}
+
+.profile_picture {
+    width: 120px;
+    height: 120px;
+}
+
+.profile_name {
+    padding: 10px 10px 10px 20px;
+}
+
+.profile_edit {
+    height: 30px;
+    padding: 10px;
+    float: right;
+}
+
+.profile_rank {
+    padding: 15px;
+}
+
+.rank_image {
+    width: 30px;
+    height: 30px;
+    margin-left: 5px;
+}
+
+.rank_options {
+    width: 30px;
+    height: 30px;
+    margin: -8px -5px -5px -10px;
+}
+
+.rank_dropdown {
+    width: 50px;
+    display: inline-block;
+    padding-left: 5px;
+}
+
+.rank_dropdown_menu {
+    width: 62px;
+    justify-content: center;
+    background-color: white;
+    border-radius: 5px;
+    padding: 1px;
+}
