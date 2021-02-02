@@ -40,4 +40,4 @@ Instructions found here: `https://medium.com/swlh/install-ruby-on-rails-on-windo
 `bundle exec rails server`\
 7. In a separate terminal start the webpack dev server to see javascript changes in real time:
 `./bin/webpack-dev-server`\
-8. Go to localhost:3000 to view the dev server website
+8. Go to `localhost:3000` to view the dev server website
