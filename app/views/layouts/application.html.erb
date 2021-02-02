@@ -13,8 +13,10 @@
 <body>
 <% if user_signed_in? %>
   <% email = current_user.email %>
+  <% user_id = current_user.id %>
 <% else %>
   <% email = "" %>
+  <% user_id = nil %>
 <% end %>
 <%= react_component("Navbar", {
     signup_route: user_registration_path,
@@ -26,7 +28,7 @@
     status_route: status_path,
     exists_route: exists_path,
     create_profile_route: profile_index_path,
-    user_id: current_user.id,
+    user_id: user_id
 })%>
 <%= yield %>
 </body>
