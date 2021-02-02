@@ -22,7 +22,7 @@ Relavent information:
 `git push -f heroku branch-name:main`  // pushes branch to main of Heroku app 
 
 ### Commands to run in development
-1. When working with JavaScript we are using yarn to install our packages. Install Yarn with:
+1. When working with JavaScript we are using yarn to install our packages. Install Yarn with:\
 `curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -`\
 `echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list`\
 `sudo apt update && sudo apt install yarn`
