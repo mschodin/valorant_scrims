@@ -1,5 +1,4 @@
 import React from "react";
-import sg_logo from '/app/assets/images/sg_logo.png';
 import { Image, Row, Container, Col, Button, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '/app/assets/stylesheets/theme.scss';

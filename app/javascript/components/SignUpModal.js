@@ -87,7 +87,7 @@ function SignUpModal(props) {
 
     function submitProfile() {
         let token = $('meta[name=csrf-token]').attr('content');
-        let body = JSON.stringify({authenticity_token: token, player_name: playerName.value, player_rank: rank})
+        let body = JSON.stringify({authenticity_token: token, player_name: playerName.value, player_rank: rank, player_logo: 'sg_profile_pic.png'})
         fetch(props.create_profile_route, {
             method: 'post',
             headers: {
