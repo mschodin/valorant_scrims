@@ -11,7 +11,7 @@ class Profile extends React.Component {
         super(props);
         this.state = {
             edit: false,
-            image: sg_logo,
+            image: props.player_logo,
             name: props.player_name,
             rank: props.player_rank,
         };
@@ -66,7 +66,7 @@ class Profile extends React.Component {
                     <Row>
                         <Col>
                             <div className={'profile_picture_and_name'}>
-                                <Image className={'profile_picture'} src={sg_logo} rounded/>
+                                <Image className={'profile_picture'} src={require('../../assets/images/profile_pictures/' + this.state.image)} rounded/>
                                 {profile_name}
                             </div>
                         </Col>
