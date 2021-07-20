@@ -18,6 +18,10 @@ class Profile extends React.Component {
 
     submitChanges = (e) => {
         e.preventDefault();
+        // TODO: Update FILE STUFF HERE
+        // let fileUploader = $("#fileUpload").get(0);
+        // let files = fileUploader.files;
+        // console.log(files);
         this.setState({
             edit: false,
             name: newName.value
@@ -33,7 +37,7 @@ class Profile extends React.Component {
             },
             body: body,
         }).then((response) => {
-            window.location.href = response.url
+            // TODO: Handle this
         })
     }
 
@@ -42,11 +46,6 @@ class Profile extends React.Component {
            rank: newRank
         });
     }
-
-    // changeLogo = () => {
-    //     let fileUploader = $("#fileUpload").get(0);
-    //     let files = fileUploader.files;
-    // }
 
     render() {
 
@@ -59,12 +58,12 @@ class Profile extends React.Component {
             profile_name = <Form onSubmit={this.submitChanges} className={'profile_name'}><Form.Group controlId={"newName"}><Form.Control defaultValue={this.state.name}/></Form.Group></Form>
             edit_button = <Button variant={'primary'} onClick={this.submitChanges}>Save</Button>
             player_rank = <RankDropdown selected_rank={this.state.rank} changeRank={this.changeRank}/>
-            edit_image_text = <div className={'edit_image_boundary'} onClick={this.changeLogo}><input style={{opacity: 0}} className={'edit_image_boundary'} type={"file"} id={"fileUpload"} accept={".png"} onClick={this.changeLogo}/><h3 className={'edit_image_text'}>EDIT</h3></div>
+            // edit_image_text = <div className={'edit_image_boundary'}><input style={{opacity: 0}} className={'edit_image_boundary'} type={"file"} id={"fileUpload"} accept={".png"}/><h3 className={'edit_image_text'}>EDIT</h3></div>
         } else {
             profile_name = <h3 className={'profile_name'}>{this.state.name}</h3>
             edit_button = <Button disabled={this.props.signed_in_user !== this.props.player_id} variant={'primary'} onClick={() => {this.setState({edit: !this.state.edit})}}>Edit</Button>
             player_rank = <Image className={'rank_image'} src={this.state.rank}/>
-            edit_image_text = <h3></h3>
+            // edit_image_text = <h3></h3>
         }
 
         return(
@@ -75,7 +74,7 @@ class Profile extends React.Component {
                         <Col>
                             <div className={'profile_picture_and_name'}>
                                 {player_logo}
-                                {edit_image_text}
+                                {/*{edit_image_text}*/}
                                 {profile_name}
                             </div>
                         </Col>

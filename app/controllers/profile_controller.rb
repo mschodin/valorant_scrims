@@ -25,6 +25,5 @@ class ProfileController < ApplicationController
     @profile.player_name = params[:profile_name]
     @profile.player_rank = params[:profile_rank]
     @profile.save
-    redirect_to profile_path(@profile.id)
   end
 end
