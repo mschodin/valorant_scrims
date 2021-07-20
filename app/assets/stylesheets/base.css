@@ -37,6 +37,24 @@ div.profile{
     height: 120px;
 }
 
+.edit_image_boundary {
+    position: absolute;
+    justify-content: center;
+    width: 120px;
+    height: 120px;
+    background: rgba(0,0,0,.5);
+    border-radius: 5px;
+}
+
+.edit_image_text {
+    margin-left: 30px;
+    margin-top: 45px;
+}
+
+.edit_image_boundary:hover {
+    opacity: 0.5;
+}
+
 .profile_name {
     padding: 10px 10px 10px 20px;
 }

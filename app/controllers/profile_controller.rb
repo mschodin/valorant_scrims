@@ -13,7 +13,7 @@ class ProfileController < ApplicationController
   end
 
   def create
-    @profile = Profile.create!(:user_id => current_user.id, :player_name => params[:player_name], :player_rank => params[:player_rank])
+    @profile = Profile.create!(:user_id => current_user.id, :player_name => params[:player_name], :player_rank => params[:player_rank], :player_logo => params[:player_logo])
     redirect_to profile_path(@profile.id)
   end
 
@@ -25,6 +25,5 @@ class ProfileController < ApplicationController
     @profile.player_name = params[:profile_name]
     @profile.player_rank = params[:profile_rank]
     @profile.save
-    redirect_to profile_path(@profile.id)
   end
 end
