@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   post 'exists', to: 'session#exists'
   # get 'profile', to: 'profile#show'
   resources :profile
+  resources :team
+  resources :team
 end

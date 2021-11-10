@@ -51,7 +51,7 @@ function NavBar(props) {
                 </Navbar.Brand>
                 <Nav className="mr-auto">
                     <Nav.Link href={"/schedule"}>Schedule</Nav.Link>
-                    <Nav.Link href={"/teams"}>Teams</Nav.Link>
+                    <Nav.Link href={"/team"}>Teams</Nav.Link>
                     <Nav.Link href={"/profile/" + profile_url}>Profile</Nav.Link>
                     <Nav.Link href={"/messages"}>Messages</Nav.Link>
                     <Nav.Link href={"/your_scrims"}>Your Scrims</Nav.Link>
