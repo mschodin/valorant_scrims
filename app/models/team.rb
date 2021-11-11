@@ -1,3 +1,3 @@
 class Team < ApplicationRecord
-  has_many :profile
+  has_and_belongs_to_many :profiles
 end

@@ -61,7 +61,6 @@ log/
 ./bundle/
 db/*.sqlite3
 .bundle/
-db/schema.rb
 /public/packs
 /public/packs-test
 /node_modules
