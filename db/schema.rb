@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_11_003145) do
+ActiveRecord::Schema.define(version: 2021_11_11_051850) do
 
   create_table "profiles", force: :cascade do |t|
     t.integer "user_id"
@@ -22,11 +22,13 @@ ActiveRecord::Schema.define(version: 2021_11_11_003145) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
-  create_table "profiles_teams", id: false, force: :cascade do |t|
-    t.integer "teams_id"
-    t.integer "profiles_id"
-    t.index ["profiles_id"], name: "index_profiles_teams_on_profiles_id"
-    t.index ["teams_id"], name: "index_profiles_teams_on_teams_id"
+  create_table "profiles_teams", force: :cascade do |t|
+    t.integer "profile_id"
+    t.integer "team_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_profiles_teams_on_profile_id"
+    t.index ["team_id"], name: "index_profiles_teams_on_team_id"
   end
 
   create_table "teams", force: :cascade do |t|
