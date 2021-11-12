@@ -13,7 +13,9 @@ class ProfileController < ApplicationController
   end
 
   def create
-    @profile = Profile.create!(:user_id => current_user.id, :player_name => params[:player_name], :player_rank => params[:player_rank], :player_logo => params[:player_logo])
+    unless Profile.exists?(:player_name => params[:player_name])
+      @profile = Profile.create!(:user_id => current_user.id, :player_name => params[:player_name], :player_rank => params[:player_rank], :player_logo => params[:player_logo])
+    end
     redirect_to profile_path(@profile.id)
   end
 
