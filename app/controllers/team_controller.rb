@@ -10,13 +10,14 @@ class TeamController < ApplicationController
   end
 
   def create
-    puts "This is how to create a team and assign multiple profiles to it"
-    # @team = Team.create(:team_name => params[:team_name]
-    # @profile1 = Profile.find_by(:id => 1)
-    # @profile2 = Profile.find_by(:id => 2)
-    # @team.profiles = [@profile1, @profile2]
-
-    redirect_to profile_path(@profile.id)
+    # TODO: add captain to the teams table
+    @captain = Profile.find_by(:player_name => params[:captain])
+    @team = Team.create(:team_name => params[:team_name])
+    @players = Array.new
+    @players.push(@captain)
+    params[:teamList].each { |teammate| @players.push(Profile.find_by(:player_name => teammate)) unless (teammate.eql?("Select Player") or @players.include?(Profile.find_by(:player_name => teammate)))}
+    @team.profiles = @players
+    # TODO: redirect to team page on success
   end
 
   def get_all_profiles

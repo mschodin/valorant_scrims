@@ -7,8 +7,7 @@ import Select from 'react-bootstrap/SelectableContext';
 function CreateTeamModal(props) {
 
     const [errorMessage, setErrorMessage] = React.useState("");
-    const [playerList, setPlayerList] = React.useState([]);
-    console.log(playerList)
+    const [teammates, setTeammates] = React.useState([]);
 
     function createSelectedItems() {
         let items = [];
@@ -16,12 +15,17 @@ function CreateTeamModal(props) {
         return items;
     }
 
-    // TODO: check path of handleSubmit
+    // TODO: force captain to be populated
+    // TODO: force team name to be populated and if it's valid (unique)
+    // TODO: use error message to relay to user if entries are bad
     function handleSubmit(e) {
         e.preventDefault();
-        console.log("in here")
+
+        let teamList = []
+        teammates.forEach(teammate => teamList.push(window[teammate.key].value))
+
         let token = $('meta[name=csrf-token]').attr('content');
-        let body = JSON.stringify({authenticity_token: token, profile_id: 1, team_name: teamName.value})
+        let body = JSON.stringify({authenticity_token: token, team_name: teamName.value, captain: captainName.value, teamList: teamList})
         fetch(props.create_team_path, {
             method: 'post',
             headers: {
@@ -31,27 +35,31 @@ function CreateTeamModal(props) {
             },
             body: body,
         }).then((response) => {
-            console.log(response)
+            if (response.ok) {
+                setTeammates([])
+            }
         })
     }
 
-    // function addPlayer() {
-    //     return (
-    //         <Form.Group controlId={"player1"}>
-    //             <Form.Label>Player 1</Form.Label>
-    //             <Form.Control as={"select"}>
-    //                 <option>Select Player</option>
-    //                 {createSelectedItems()}
-    //             </Form.Control>
-    //         </Form.Group>
-    //     );
-    // }
     function handleAddPlayer() {
-        // setPlayerList([])
-        console.log("when is this happeneing? ")
+        let tempList = []
+        teammates.forEach(teammate => tempList.push(teammate))
+        tempList.push(
+            <Form.Group key={"player" + (teammates.length + 1)} controlId={"player" + (teammates.length + 1)}>
+                <Form.Label>Player {teammates.length + 1}</Form.Label>
+                <Form.Control as={"select"}>
+                    <option>Select Player</option>
+                    {createSelectedItems()}
+                </Form.Control>
+            </Form.Group>)
+
+        setTeammates(tempList)
     }
 
-    // TODO: Create function to check if team name is valid
+    function handleClose () {
+        props.onHide()
+        setTeammates([])
+    }
 
     return (
         <Modal
@@ -59,6 +67,7 @@ function CreateTeamModal(props) {
             size="lg"
             aria-labelledby="contained-modal-title-vcenter"
             centered
+            onHide={() => handleClose()}
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
@@ -71,22 +80,15 @@ function CreateTeamModal(props) {
                         <Form.Label>Team Name</Form.Label>
                         <Form.Control type={"text"} placeholder={"Enter Team Name"} />
                     </Form.Group>
-                    <Form.Group controlId={"captain"}>
+                    <Form.Group controlId={"captainName"}>
                         <Form.Label>Captain</Form.Label>
                         <Form.Control as={"select"}>
                             <option>Select Captain</option>
                             {createSelectedItems()}
                         </Form.Control>
                     </Form.Group>
-                    {/*<Form.Group controlId={"player1"}>*/}
-                    {/*    <Form.Label>Player 1</Form.Label>*/}
-                    {/*    <Form.Control as={"select"}>*/}
-                    {/*        <option>Select Player</option>*/}
-                    {/*        {createSelectedItems()}*/}
-                    {/*    </Form.Control>*/}
-                    {/*</Form.Group>*/}
-                    {playerList}
-                    <Button type="button" onClick={handleAddPlayer()}>+</Button>
+                    {teammates}
+                    <Button type="button" onClick={() => {handleAddPlayer()}}>Add Player</Button>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant={"primary"} type={"submit"}>Create</Button>
