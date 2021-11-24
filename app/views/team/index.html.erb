@@ -7,4 +7,5 @@
 <%= react_component("Teams", {
   create_team_path: team_index_path,
   signed_in_user: user_id,
+  player_list: Profile.all.collect(&:player_name)
 })%>

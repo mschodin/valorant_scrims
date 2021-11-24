@@ -5,6 +5,8 @@ import '/app/assets/stylesheets/theme.scss';
 import '/app/assets/stylesheets/base.css';
 import RankDropdown from "./RankDropdown";
 import Modal from "react-bootstrap/Modal";
+import LoginModal from "./LoginModal";
+import CreateTeamModal from "./CreateTeamModal";
 
 class Teams extends React.Component {
     constructor(props) {
@@ -14,6 +16,7 @@ class Teams extends React.Component {
             image: props.player_logo,
             name: props.player_name,
             rank: props.player_rank,
+            showCreateTeam: false
         };
     }
 
@@ -33,27 +36,20 @@ class Teams extends React.Component {
         })
     }
 
+
+
     render() {
         return(
             <div className={'profile'}>
                 teams
-                <Form onSubmit={this.createTeam}>
-                    <Modal.Body>
-                        <Form.Group controlId={"teamName"}>
-                            <Form.Label>Team Name</Form.Label>
-                            <Form.Control type={"text"} placeholder={"Enter Team Name"} />
-                        </Form.Group>
-                        <Form.Group controlId={"captain"}>
-                            <Form.Label>Captain</Form.Label>
-                            <Form.Control type={"text"} />
-                        </Form.Group>
-                    </Modal.Body>
-                    <Modal.Footer>
-                        {/*<Button variant={"secondary"} type={"reset"} className={'mr-auto'} onClick={handleLogin}>Cancel</Button>*/}
-                        <Button closeButton>Cancel</Button>
-                        <Button variant={"primary"} type={"submit"}>Create</Button>
-                    </Modal.Footer>
-                </Form>
+                <Button onClick={() => this.setState({showCreateTeam: true})}>Create Team</Button>
+                <Button onClick={() => console.log(this.props.player_list)}>List Players</Button>
+                <CreateTeamModal
+                    show={this.state.showCreateTeam}
+                    onHide={() => this.setState({showCreateTeam: false})}
+                    create_team_path={this.props.create_team_path}
+                    player_list={this.props.player_list}
+                />
             </div>
         );
     }

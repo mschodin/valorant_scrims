@@ -3,7 +3,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import sg_logo from '/app/assets/images/sg_logo.png';
 import Button from 'react-bootstrap/Button';
-import LoginModal from './LoginModal'
+import LoginModal from './LoginModal';
 import SignUpModal from "./SignUpModal";
 import ForgotPasswordModal from "./ForgotPasswordModal";
 

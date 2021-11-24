@@ -3,7 +3,9 @@ class TeamController < ApplicationController
   end
 
   def index
-    puts Profile.all
+    puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+    puts Profile.all.collect(&:player_name)
+    puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
     # puts Profile.all.select { |p| p.player_name}
   end
 
