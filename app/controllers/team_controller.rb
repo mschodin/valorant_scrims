@@ -3,10 +3,6 @@ class TeamController < ApplicationController
   end
 
   def index
-    puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
-    puts Profile.all.collect(&:player_name)
-    puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
-    # puts Profile.all.select { |p| p.player_name}
   end
 
   def create
@@ -19,11 +15,9 @@ class TeamController < ApplicationController
 
     @team.profiles = @players
 
-    # TODO: redirect to team page on success
+    redirect_to team_path(@team.id)
   end
 
   def get_all_profiles
-    puts "***********************"
-    puts Profile.all
   end
 end

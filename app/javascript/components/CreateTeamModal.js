@@ -37,6 +37,7 @@ function CreateTeamModal(props) {
         }).then((response) => {
             if (response.ok) {
                 setTeammates([])
+                window.location.href = response.url
             }
         })
     }

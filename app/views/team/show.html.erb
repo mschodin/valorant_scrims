@@ -1,0 +1,11 @@
+<% if user_signed_in? %>
+  <% user_id = current_user.id %>
+<% else %>
+  <% user_id = nil %>
+<% end %>
+
+<%= react_component("Team", {
+  create_team_path: team_index_path,
+  signed_in_user: user_id,
+  player_list: Profile.all.collect(&:player_name)
+})%>
