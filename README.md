@@ -26,6 +26,16 @@ Relavent information:
 Use ruby version 2.6.6, rails version 6.1.1, and bundler version 1.17.3\
 To install specific bundler version replace the `gem install bundler` command with `gem install bundler -v '~> 1.17.3'`\
 Instructions found here: `https://medium.com/swlh/install-ruby-on-rails-on-windows-10-through-wsl-23502e801fe8`\
+
+Those instructions are gone. Here are the new ones:
+A. Install Ubuntu version 20 
+B. Enable WSL by entering this command in powershell: `dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart`
+C. Restart PC
+D. Open Ubuntu from windows explorer
+E. Go through basic Ubuntu setup
+F. WSL should now work. Check by typing `wsl` in powershell.
+G. Run this command in wsl: `sudo apt-get install libpq-dev ruby-dev`
+
 2. When working with JavaScript we are using yarn to install our packages. Install Yarn with:\
 `curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -`\
 `echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list`\
