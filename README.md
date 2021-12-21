@@ -36,13 +36,13 @@ E. Go through basic Ubuntu setup\
 F. WSL should now work. Check by typing `wsl` in powershell.\
 G. Run this command in wsl: `sudo apt-get install libpq-dev ruby-dev`\
 
-You may need these: `sudo apt install curl
-curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+You may need these: `sudo apt install curl\
+curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -\
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -\
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list\
 
-sudo apt-get update
-sudo apt-get install git-core zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev nodejs yarn`
+sudo apt-get update\
+sudo apt-get install git-core zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev nodejs yarn`\
 
 2. When working with JavaScript we are using yarn to install our packages. Install Yarn with:\
 `curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -`\
